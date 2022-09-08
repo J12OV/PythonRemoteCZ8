@@ -1,0 +1,7 @@
+Rooms:
+  Room:
+    id: 1
+  name: "Python Django"
+  Room:
+    id: 2
+    name: "Python"

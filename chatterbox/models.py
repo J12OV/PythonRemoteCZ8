@@ -34,4 +34,23 @@ mistnost.name ="Jmeno"
 misnost.description = "
 
 print(mistnost)
+
+First import !!!
+
+Python Django shell
+(SELECT * FROM Room)
+Room.objects.all()
+
+Najdi ROOM obsahující “Django” v sloupečku name
+(SELECT * FROM Room Where name LIKE "Django")
+Room.objects.filetr(name__contains="Django")
+
+Vrať ROOM s “Python” v názvu (Přesně!) (SELECT * FROM Room Where name="Python")
+Room.objects.get(name="Python")
+
+Složená podmínka ve WHERE lze použít logické operátory (“|” = OR/nebo, “&” = AND/a)
+Room.objects.filter(
+  Q(name__contains="Django") |
+  Q(name__startswith="Python")
+)
 """
