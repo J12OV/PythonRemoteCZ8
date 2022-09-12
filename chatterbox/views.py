@@ -6,7 +6,11 @@ from chatterbox.models import Room, Message
 def hello(request, s):
     return HttpResponse(f'Hello, {s} world!')
 
+def home(request):
+    rooms = Room.objects.all()  # najdeme všechny místnosti,
 
+    context = {'rooms': rooms}
+    return render(request, 'chatterbox/home.html', context)
 
 
 def search(request, s):
@@ -25,3 +29,8 @@ def search(request, s):
     # response += "<br>Messages: "
     #for message in messages:
     #    response += message.body[0:10] + " ... , "
+def room(request, pk):
+    room = Room.objects.get(id=pk)  # najdeme místnost se zadaným id
+    messages = Message.objects.filter(room=pk)
+    context = {'room': room, 'messages': messages}
+    return render(request, "chatterbox/room.html", context) #TODO: vytvořit template
