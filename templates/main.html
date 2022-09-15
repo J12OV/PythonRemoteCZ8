@@ -3,14 +3,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title> {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'chatterbox/style.css' %}" />
 
 </head>
 <body>
-  <h1>Chatterbox</h1>
+
+<header> Chatterbox </header>
+
   {% include 'navbar.html' %}
+<main>
   {% block content %}{% endblock %}
+</main>
 
 </body>
 </html>
