@@ -23,11 +23,16 @@ nav li {
 }
 
 /* home.html */
+.user_hello {
+    font-size: 32px;
+    padding-bottom: 15px;
+}
+
 .welcome {
     font-size: 32px;
 }
 
-/* list_of_rooms.html */
+/* rooms.html */
 .list-of-rooms {
     font-size: 32px;
 }
@@ -57,7 +62,7 @@ input[type=submit] {
 .messages-box {
 }
 
-.other-message {
+.other-message-body {
     background: white;
     width: 80%;
     border: solid 3px #4432a8;
@@ -67,6 +72,30 @@ input[type=submit] {
 }
 
 .my-message {
+
+}
+
+.my-message-info {
+    font-size: 14px;
+    width: 20%;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.other-message-info {
+    font-size: 14px;
+    width: 20%;
+}
+
+.message-user {
+    font-weight: bold;
+}
+
+.message-time {
+    font-style: italic;
+}
+
+.my-message-body {
     background: white;
     width: 80%;
     border: solid 3px #b81a51;
@@ -94,8 +123,4 @@ input[type=submit] {
 /* login.html */
 .form-row {
     margin-bottom: 15px;
-}
-.user_hello {
-    font-size: 32px;
-    padding-bottom: 15px;
 }

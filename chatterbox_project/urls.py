@@ -28,11 +28,14 @@ urlpatterns = [
     path('room/<str:pk>/', chatterbox.views.room, name='room'),  #{% url 'room'
     path('rooms/', chatterbox.views.rooms, name='rooms'),
 
+    path('create_room/', chatterbox.views.create_room, name="create_room"),
+    # path('create_room/new_room', chatterbox.views.new_room, name="create_room"),
+
     # accounts aplikace
     path("accounts/", include("accounts.urls")),
     path("accounts/", include("django.contrib.auth.urls")),  # login, logout,
 
-   # path("__reload__/", include("django_browser_reload.urls"))
+    path("__reload__/", include("django_browser_reload.urls"))   # reload pro vkládání nové zprávy
 
 
 ]

@@ -16,10 +16,18 @@ class Room(models.Model):
     def __str__(self):
         return self.name
 
+    def messages_count(self):
+        room_messages = self.message_set.all()
+        return room_messages.count()
+
+    def last_message_time(self):
+        room_message = self.message_set.all()[0]
+        return room_message.updated
+
 class Message(models.Model):
-    body = models.TextField()
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    body = models.TextField(null=False, blank=False)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
@@ -28,6 +36,7 @@ class Message(models.Model):
 
     def __str__(self):
         return self.body[0:50]
+
 
 """
 mistnost = Room()
