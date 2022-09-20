@@ -124,3 +124,9 @@ input[type=submit] {
 .form-row {
     margin-bottom: 15px;
 }
+
+.last-item {
+    float: right;
+    margin-right: 40px;
+
+}

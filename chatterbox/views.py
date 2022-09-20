@@ -1,6 +1,10 @@
 from django.contrib.auth.decorators import login_required
+from django.forms import ModelForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect, HttpResponse
+from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.generic import UpdateView
 
 from chatterbox.models import Room, Message
 
@@ -61,23 +65,34 @@ def create_room(request):
         descr = request.POST.get('descr').strip()
         if len(name) > 0 and len(descr) > 0:
             room = Room.objects.create(
-            name=name,
-            description=descr
-        )
+                host=request.user,
+                name=name,
+                description=descr
+            )
 
-        return redirect('room', pk=room.id)
+            return redirect('room', pk=room.id)
 
     return render(request, 'chatterbox/create_room.html')
 
+
 @login_required
-def new_room(request):
-    if request.method == 'POST':
-        room = Room.objects.create(
-            name=request.POST.get('name'),
-            description=request.POST.get('descr')
-        )
+def delete_room(request, pk):
+    room = Room.objects.get(id=pk)
+    room.delete()
 
-        return redirect('room', pk=room.id)
+    return redirect('rooms')
 
-    return redirect('home')
+# formulář
+class RoomEditForm(ModelForm):
 
+    class Meta:
+        model = Room
+        fields = '__all__'
+
+#view
+@method_decorator(login_required, name ='dispatch')
+class EditRoom(UpdateView):
+    template_name='chatterbox/edit_room.html'
+    model = Room
+    form_class = RoomEditForm
+    success_url = reverse_lazy('home')
