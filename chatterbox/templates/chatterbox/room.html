@@ -9,13 +9,22 @@
     </div>
 
     <div class="message-form">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="body">Message: </label>
+            <textarea name="body" id="body" rows="1" cols="100"> </textarea>
+            <input type="file" name="upload" accept="*">  <!-- accept=".doc, .pdf, .txt ,image/*,*" -->
+            <input type="submit" value="Send">
+        </form>
+    </div>
+<!--    <div class="message-form">
         <form action="" method="POST">
             {% csrf_token %}
             <label for="body">Message: </label>
             <textarea name="body" id="body" rows="1" cols="100"> </textarea>
             <input type="submit" value="Send">
         </form>
-    </div>
+    </div>-->
 
     <div class="messages-box">
     {% for message in messages %}
@@ -26,6 +35,11 @@
                     <span class="message-time">{{ message.created }}</span>
                 </div>
                 <div class="my-message-body">{{ message.body }}</div>
+                {% if message.file %}  <!-- zobrazit obrázek -->
+                    <div class="my-message-file">
+                        <a href="{{ message.file }}"><img src="{{ message.file }}" width="50px"></a>
+                    </div>
+                {% endif %}
             </div>
         {% else %}
             <div class="other-message">
@@ -34,6 +48,11 @@
                     <span class="message-time">{{ message.created }}</span>
                 </div>
                 <div class="other-message-body">{{ message.body }}</div>
+                {% if message.file %}  <!-- zobrazit obrázek -->
+                    <div class="other-message-file">
+                        <a href="{{ message.file }}"><img src="{{ message.file }}" width="50px"></a>
+                    </div>
+                {% endif %}
             </div>
         {% endif %}
     {% endfor %}

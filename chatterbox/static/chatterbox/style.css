@@ -87,6 +87,21 @@ input[type=submit] {
     width: 20%;
 }
 
+.my-message-file {
+    width: 50px;
+    border: solid 2px #b81a51;
+    margin-top: -20px;
+    margin-right: 10px;
+    margin-left: auto;
+}
+
+.my-message-file {
+    width: 50px;
+    border: solid 2px #b81a51;
+    margin-top: -30px;
+    margin-right: 10px;
+    margin-left: auto;
+}
 .message-user {
     font-weight: bold;
 }
@@ -130,3 +145,21 @@ input[type=submit] {
     margin-right: 40px;
 
 }
+
+/* css for search */
+#search {
+   position: absolute;
+   top: 10px;
+   right: 28px;
+   height: 50px;
+   line-height: 50px;
+}
+
+#search input.text {
+   padding: 10px 40px 10px 10px;
+   background: rgba(222, 231, 250, 1) url(/static/chatterbox/search.png) top right no-repeat;
+   color: black;
+   width: 200px;
+   border: solid 1px #3c3c3c;
+}
+
