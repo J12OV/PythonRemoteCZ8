@@ -4,14 +4,10 @@
 
 {% block content %}
 
-{% if profile.user.id == request.user.id %}
-<form method="POST" action="">
+<form method=POST" action="">
     {% csrf_token %}
     <table>{{ form }}</table>
     <button type="SUBMIT">SAVE CHANGES</button>
-</form>
-<!-- TODO redirect -->
 
-{% endif %}
 
 {% endblock %}

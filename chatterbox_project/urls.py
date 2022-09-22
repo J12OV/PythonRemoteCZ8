@@ -19,6 +19,7 @@ from django.conf import settings  # add this
 from django.conf.urls.static import static  # add this
 
 import chatterbox.views
+import profiles.views
 
 urlpatterns = [
     path('', chatterbox.views.home, name='home'),
@@ -36,6 +37,11 @@ urlpatterns = [
     path('delete_room/<pk>/', chatterbox.views.delete_room, name="delete_room"),
     path('delete_room_yes/<pk>/', chatterbox.views.delete_room_yes, name="delete_room_yes"),
     path('edit_room/<pk>/', chatterbox.views.EditRoom.as_view(), name="edit_room"),
+
+    # profiles aplikace
+    path('users/', profiles.views.profiles_list, name='profiles'),
+    path('user/<pk>/', profiles.views.user_profile, name='profile'),
+    path('edituser/<pk>/', profiles.views.EditProfile.as_view(), name='editprofile'),
 
     # accounts aplikace
     path("accounts/", include("accounts.urls")),
