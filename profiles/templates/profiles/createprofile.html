@@ -1,0 +1,21 @@
+{% extends 'main.html' %}
+
+{% block title %}Create profile: {{ user.username }}{% endblock %}
+
+{% block content %}
+
+  <form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" id="first_name"> <br>
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" id="last_name"> <br>
+    <label for="email">Email:</label>
+    <input type="text" name="email" id="email"> <br>
+    <label for="aboutme">About me:</label>
+    <input type="text" name="aboutme" id="aboutme"> <br>
+    <input type="file" name="upload" accept="*">
+    <button type="submit">{{ label }}</button>
+  </form>
+
+{% endblock %}

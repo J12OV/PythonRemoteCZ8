@@ -4,10 +4,20 @@
 
 {% block content %}
 
-<form method=POST" action="">
+
+ <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <table>{{ form }}</table>
-    <button type="SUBMIT">SAVE CHANGES</button>
+    <label for="first_name">First Name:</label>
+    <input type="text" name="first_name" id="first_name" value="{{profile.user.first_name}}"> <br>
+    <label for="last_name">Last Name:</label>
+    <input type="text" name="last_name" id="last_name" value="{{profile.user.last_name}}"> <br>
+    <label for="email">Email:</label>
+    <input type="text" name="email" id="email" value="{{profile.user.email}}"> <br>
+    <label for="aboutme">About me:</label>
+    <input type="text" name="aboutme" id="aboutme" value="{{profile.user.about_me}}"> <br>
+    <input type="file" name="upload" accept="*">
+    <button type="submit">Update</button>
+  </form>
 
 
 {% endblock %}
